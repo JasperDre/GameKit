@@ -69,10 +69,10 @@ set(SDL_TTF_DIR "${DEPS_DIR}/SDL_TTF")
 target_include_directories(${PROJECT_NAME} PRIVATE "${SDL_TTF_DIR}")
 
 # GLAD
-set(GLAD_DIR "${DEPS_DIR}/GLAD")
+set(GLAD_DIR "${DEPS_DIR}/glad")
 add_subdirectory("${GLAD_DIR}")
 target_link_libraries(${PROJECT_NAME} "GLAD" "${GLAD_LIBRARIES}")
-target_include_directories(${PROJECT_NAME} PRIVATE "${DEPS_DIR}/GLAD/include")
+target_include_directories(${PROJECT_NAME} PRIVATE "${GLAD_DIR}/include")
 
 message(STATUS "This is the BINARY dir " ${PROJECT_BINARY_DIR})
 message(STATUS "This is the SOURCE dir " ${PROJECT_SOURCE_DIR})
