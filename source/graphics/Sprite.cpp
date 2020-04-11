@@ -24,10 +24,10 @@
  *
  * =====================================================================================
  */
-#include "gk/graphics/Sprite.hpp"
-#include "gk/core/Exception.hpp"
+#include "Graphics/Sprite.hpp"
+#include "Core/Exception.hpp"
 
-namespace gk {
+namespace GameKit {
 
 Sprite::Sprite(const std::string &textureName, u16 frameWidth, u16 frameHeight, bool isAnimated) {
 	load(textureName, frameWidth, frameHeight, isAnimated);
@@ -91,5 +91,5 @@ void Sprite::setCurrentAnimation(u16 currentAnimation) {
 	m_currentAnimation = currentAnimation;
 }
 
-} // namespace gk
+} // namespace GameKit
 

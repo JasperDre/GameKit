@@ -24,11 +24,11 @@
  *
  * =====================================================================================
  */
-#include "gk/core/Exception.hpp"
-#include "gk/core/SDLHeaders.hpp"
-#include "gk/core/SDLLoader.hpp"
+#include "Core/Exception.hpp"
+#include "Core/SDLHeaders.hpp"
+#include "Core/SDLLoader.hpp"
 
-namespace gk {
+namespace GameKit {
 
 SDLLoader::~SDLLoader() {
 	if(m_mixInitialized) Mix_CloseAudio();
@@ -69,5 +69,5 @@ void SDLLoader::load() {
 	Mix_Volume(-1, MIX_MAX_VOLUME);
 }
 
-} // namespace gk
+} // namespace GameKit
 

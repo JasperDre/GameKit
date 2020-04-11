@@ -24,10 +24,10 @@
  *
  * =====================================================================================
  */
-#include "gk/core/input/InputHandler.hpp"
-#include "gk/core/GameClock.hpp"
+#include "Core/input/InputHandler.hpp"
+#include "Core/GameClock.hpp"
 
-namespace gk {
+namespace GameKit {
 
 bool InputHandler::isKeyPressedOnce(GameKey key) {
 	if(isKeyPressed(key)) {
@@ -59,5 +59,5 @@ void InputHandler::addKey(GameKey key) {
 	m_lastTimePressed[key] = 0;
 }
 
-} // namespace gk
+} // namespace GameKit
 

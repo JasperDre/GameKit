@@ -24,11 +24,12 @@
  *
  * =====================================================================================
  */
-#include "gk/core/Debug.hpp"
-#include "gk/gl/GLCheck.hpp"
-#include "gk/gl/OpenGL.hpp"
+#include "Core/Debug.hpp"
+#include "GL/GLCheck.hpp"
+#define USE_GLAD
+#include "GL/OpenGL.hpp"
 
-namespace gk {
+namespace GameKit {
 
 namespace priv {
 
@@ -90,7 +91,7 @@ void glCheckError(const char* file, unsigned int line, const char* expression)
 
 			default:
 			{
-				error = "GK_UNKNOWN_ERROR";
+				error = "GameKit_UNKNOWN_ERROR";
 				description = "Unknown error: " + std::to_string(errorCode);
 				break;
 			}
@@ -114,5 +115,5 @@ void glCheckError(const char* file, unsigned int line, const char* expression)
 
 } // namespace priv
 
-} // namespace gk
+} // namespace GameKit
 

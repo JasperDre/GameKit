@@ -27,9 +27,9 @@
 #define GLM_FORCE_RADIANS
 #include <glm/gtc/matrix_transform.hpp>
 
-#include "gk/gl/Transform.hpp"
+#include "Transform.hpp"
 
-namespace gk {
+namespace GameKit {
 
 const Transform Transform::Identity;
 

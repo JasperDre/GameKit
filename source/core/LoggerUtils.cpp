@@ -24,10 +24,10 @@
  *
  * =====================================================================================
  */
-#include "gk/core/LoggerUtils.hpp"
+#include "Core/LoggerUtils.hpp"
 
-gk::Logger &operator<<(gk::Logger &stream, const gk::Color &color) {
+GameKit::Logger &operator<<(GameKit::Logger &stream, const GameKit::Color &color) {
 	stream.addSpace();
-	return stream << "gk::Color(" << color.r * 255 << ", " << color.g * 255 << ", " << color.b * 255 << ", " << color.a * 255 << ")";
+	return stream << "GameKit::Color(" << color.r * 255 << ", " << color.g * 255 << ", " << color.b * 255 << ", " << color.a * 255 << ")";
 }
 

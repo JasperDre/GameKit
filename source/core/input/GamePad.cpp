@@ -24,9 +24,9 @@
  *
  * =====================================================================================
  */
-#include "gk/core/input/GamePad.hpp"
+#include "Core/input/GamePad.hpp"
 
-namespace gk {
+namespace GameKit {
 
 InputHandler *GamePad::inputHandler = nullptr;
 

@@ -26,10 +26,10 @@
  */
 #include <algorithm>
 
-#include "gk/graphics/Tilemap.hpp"
-#include "gk/resource/ResourceHandler.hpp"
+#include "Graphics/Tilemap.hpp"
+#include "Resources/ResourceHandler.hpp"
 
-namespace gk {
+namespace GameKit {
 
 Tilemap::Tilemap(u16 width, u16 height, Tileset &tileset, const std::vector<std::vector<u16>> &data) : m_tileset(tileset) {
 	m_width = width;
@@ -93,5 +93,5 @@ bool Tilemap::inTile(float x, float y, u16 tileID) {
 	               y / m_tileset.tileHeight()) == tileID;
 }
 
-} // namespace gk
+} // namespace GameKit
 

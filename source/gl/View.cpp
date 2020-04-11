@@ -29,9 +29,9 @@
 #define GLM_FORCE_RADIANS
 #include <glm/gtc/matrix_transform.hpp>
 
-#include "gk/gl/View.hpp"
+#include "GL/View.hpp"
 
-namespace gk {
+namespace GameKit {
 
 View::View() {
 	reset(FloatRect(0, 0, 1000, 1000));
@@ -116,5 +116,5 @@ const Transform &View::getViewTransform() const {
 	return m_viewTransform;
 }
 
-} // namespace gk
+} // namespace GameKit
 

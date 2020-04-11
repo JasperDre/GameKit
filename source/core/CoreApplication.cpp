@@ -26,12 +26,12 @@
  */
 #include <ctime>
 
-#include "gk/audio/AudioPlayer.hpp"
-#include "gk/core/CoreApplication.hpp"
-#include "gk/core/Mouse.hpp"
-#include "gk/core/Exception.hpp"
+#include "audio/AudioPlayer.hpp"
+#include "Core/CoreApplication.hpp"
+#include "Core/Mouse.hpp"
+#include "Core/Exception.hpp"
 
-namespace gk {
+namespace GameKit {
 
 CoreApplication::CoreApplication(int argc, char **argv) : m_argumentParser(argc, argv) {
 }
@@ -100,7 +100,7 @@ void CoreApplication::onEvent(const SDL_Event &event) {
 }
 
 void CoreApplication::handleEvents() {
-	gk::ApplicationState *currentState = nullptr;
+	GameKit::ApplicationState *currentState = nullptr;
 	if (!m_stateStack.empty())
 		currentState = &m_stateStack.top();
 
@@ -141,5 +141,5 @@ void CoreApplication::mainLoop() {
 	}
 }
 
-} // namespace gk
+} // namespace GameKit
 

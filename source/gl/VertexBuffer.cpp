@@ -24,10 +24,10 @@
  *
  * =====================================================================================
  */
-#include "gk/gl/GLCheck.hpp"
-#include "gk/gl/VertexBuffer.hpp"
+#include "gl/GLCheck.hpp"
+#include "gl/VertexBuffer.hpp"
 
-namespace gk {
+namespace GameKit {
 
 VertexBuffer::VertexBuffer() {
 	glCheck(glGenBuffers(1, &m_id));
@@ -62,5 +62,5 @@ void VertexBuffer::bind(const VertexBuffer *vertexBuffer) {
 	}
 }
 
-} // namespace gk
+} // namespace GameKit
 

@@ -24,9 +24,9 @@
  *
  * =====================================================================================
  */
-#include "gk/core/ApplicationStateStack.hpp"
+#include "Core/ApplicationStateStack.hpp"
 
-namespace gk {
+namespace GameKit {
 
 ApplicationStateStack *ApplicationStateStack::s_instance = nullptr;
 
@@ -40,5 +40,5 @@ void ApplicationStateStack::clearDeletedStates() {
 		m_trash.pop();
 }
 
-} // namespace gk
+} // namespace GameKit
 

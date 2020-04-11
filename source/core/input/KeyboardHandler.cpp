@@ -24,12 +24,12 @@
  *
  * =====================================================================================
  */
-#include "gk/core/input/KeyboardHandler.hpp"
-#include "gk/core/Debug.hpp"
-#include "gk/core/IntTypes.hpp"
-#include "gk/core/XMLFile.hpp"
+#include "Core/input/KeyboardHandler.hpp"
+#include "Core/Debug.hpp"
+#include "Core/IntTypes.hpp"
+#include "Core/XMLFile.hpp"
 
-namespace gk {
+namespace GameKit {
 
 void KeyboardHandler::loadKeysFromFile(const std::string &filename) {
 	XMLFile doc(filename);
@@ -45,10 +45,10 @@ void KeyboardHandler::loadKeysFromFile(const std::string &filename) {
 			else if ((keyName = keyElement->Attribute("keycode")))
 				m_keys[key] = SDL_GetKeyFromName(keyName);
 			else
-				gkWarning() << "Key '" << keyElement->Attribute("name") << "' is invalid";
+				GameKitWarning() << "Key '" << keyElement->Attribute("name") << "' is invalid";
 
 			if(m_keys[key] == SDLK_UNKNOWN) {
-				gkWarning() << "Key '" << keyName << "' not recognized";
+				GameKitWarning() << "Key '" << keyName << "' not recognized";
 			}
 
 			InputHandler::addKey(key);
@@ -68,5 +68,5 @@ bool KeyboardHandler::isKeyPressed(GameKey key) {
 	return m_keysPressed[key];
 }
 
-} // namespace gk
+} // namespace GameKit
 

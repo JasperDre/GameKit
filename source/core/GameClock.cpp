@@ -26,10 +26,10 @@
  */
 #include <cmath>
 
-#include "gk/core/SDLHeaders.hpp"
-#include "gk/core/GameClock.hpp"
+#include "Core/SDLHeaders.hpp"
+#include "Core/GameClock.hpp"
 
-namespace gk {
+namespace GameKit {
 
 GameClock *GameClock::s_instance = nullptr;
 
@@ -123,4 +123,4 @@ void GameClock::computeFramesPerSecond() {
 	}
 }
 
-} // namespace gk
+} // namespace GameKit

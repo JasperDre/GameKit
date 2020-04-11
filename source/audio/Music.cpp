@@ -24,10 +24,10 @@
  *
  * =====================================================================================
  */
-#include "gk/audio/Music.hpp"
-#include "gk/core/Exception.hpp"
+#include "audio/Music.hpp"
+#include "Core/Exception.hpp"
 
-namespace gk {
+namespace GameKit {
 
 Music::Music(const std::string &filename) {
 	openFromFile(filename);
@@ -45,5 +45,5 @@ void Music::play() {
 	Mix_PlayMusic(m_music.get(), -1);
 }
 
-} // namespace gk
+} // namespace GameKit
 

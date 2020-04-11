@@ -1,50 +1,28 @@
-#------------------------------------------------------------------------------
-# CMake configuration
-#------------------------------------------------------------------------------
-cmake_minimum_required(VERSION 3.1)
+cmake_minimum_required(VERSION 3.7)
 
-project(gamekit VERSION 0.0.1 LANGUAGES CXX)
+project(GameKit)
+
+set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+
+set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Source")
+set(DEPS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Dependencies")
+
+file(GLOB_RECURSE SRC
+    "${SRC_DIR}/*.cpp"
+)
+
+file(GLOB_RECURSE INC
+	"${SRC_DIR}/*.hpp"
+)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake" "${CMAKE_CURRENT_SOURCE_DIR}/cmake/sdl2")
 
-add_subdirectory(source)
+add_library(${CMAKE_PROJECT_NAME} STATIC ${SRC} ${INC})
 
-if (WIN32)
-	set(WIN_LIBRARIES_PATH "C:/Libraries")
-endif ()
+target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/Source")
 
-#------------------------------------------------------------------------------
-# Add executables
-#------------------------------------------------------------------------------
-add_library(${CMAKE_PROJECT_NAME} STATIC ${SOURCE_FILES})
-
-target_include_directories(${CMAKE_PROJECT_NAME}
-	PUBLIC
-		$<INSTALL_INTERFACE:include>
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-	PRIVATE
-		${CMAKE_CURRENT_SOURCE_DIR}/external
-)
-
-#------------------------------------------------------------------------------
-# Setup install rule
-#------------------------------------------------------------------------------
-include(GNUInstallDirs)
-
-install(TARGETS ${CMAKE_PROJECT_NAME}
-	EXPORT ${CMAKE_PROJECT_NAME}-export
-	LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-	ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-	#INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-)
-
-install(DIRECTORY include/gk DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-
-#------------------------------------------------------------------------------
-# Compiler flags
-#------------------------------------------------------------------------------
 target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE -g)
 target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE -DDEBUG_ENABLED -DDEBUG_COLOR)
 
@@ -54,104 +32,47 @@ if(NOT MSVC)
 endif()
 
 if(MSVC)
-	set(CMAKE_CXX_STANDARD 14)
+	set(CMAKE_CXX_STANDARD 17)
 else()
-	target_compile_options(${CMAKE_PROJECT_NAME} PUBLIC -std=c++14)
+	target_compile_options(${CMAKE_PROJECT_NAME} PUBLIC -std=c++17)
 endif()
 
-# target_compile_features(${CMAKE_PROJECT_NAME} PUBLIC cxx_std_14)
+# TinyXML2
+target_include_directories(${PROJECT_NAME} PRIVATE "${DEPS_DIR}/tinyxml2")
 
-#------------------------------------------------------------------------------
-# Packages
-#------------------------------------------------------------------------------
-# - tinyxml2
-#------------------------------------------------------------------------------
-if (WIN32)
-	set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} ${WIN_LIBRARIES_PATH}/tinyxml2)
-endif ()
+# GLM
+target_include_directories(${PROJECT_NAME} PRIVATE "${DEPS_DIR}/glm")
 
-find_package(TinyXml2 REQUIRED)
-if(NOT TINYXML2_FOUND)
-	message(FATAL_ERROR "tinyxml2 is needed to build the project. Please install it correctly.")
-endif()
+# SDL
+target_include_directories(${PROJECT_NAME} PRIVATE "${DEPS_DIR}/SDL")
+set(SDL_DIR "${DEPS_DIR}/SDL")
+add_subdirectory("${SDL_DIR}")
+target_link_libraries(${PROJECT_NAME} "SDL" "${SDL_LIBRARIES}")
+target_include_directories(${PROJECT_NAME} PRIVATE "${SDL_DIR}/include")
 
-include_directories(${TINYXML2_INCLUDE_DIRS})
-link_directories(${TINYXML2_LIBRARY_DIRS})
+#target_include_directories(${PROJECT_NAME} PRIVATE "${DEPS_DIR}/SDL_Image")
+set(SDL_Image_DIR "${DEPS_DIR}/SDL_Image")
+#add_subdirectory("${SDL_Image_DIR}")
+#target_link_libraries(${PROJECT_NAME} "SDL_Image" "${SDL_LIBRARIES}")
+target_include_directories(${PROJECT_NAME} PRIVATE "${SDL_Image_DIR}")
 
-#------------------------------------------------------------------------------
-# - OpenGL
-#------------------------------------------------------------------------------
-set(OpenGL_GL_PREFERENCE "LEGACY")
+#target_include_directories(${PROJECT_NAME} PRIVATE "${DEPS_DIR}/SDL_Mixer")
+set(SDL_Mixer_DIR "${DEPS_DIR}/SDL_Mixer")
+#add_subdirectory("${SDL_Mixer_DIR}")
+#target_link_libraries(${PROJECT_NAME} "SDL_Mixer" "${SDL_LIBRARIES}")
+target_include_directories(${PROJECT_NAME} PRIVATE "${SDL_Mixer_DIR}/include")
 
-if (WIN32)
-	set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} ${WIN_LIBRARIES_PATH}/glm)
-endif ()
+#target_include_directories(${PROJECT_NAME} PRIVATE "${DEPS_DIR}/SDL_TTF")
+set(SDL_TTF_DIR "${DEPS_DIR}/SDL_TTF")
+#add_subdirectory("${SDL_TTF_DIR}")
+#target_link_libraries(${PROJECT_NAME} "SDL_TTF" "${SDL_LIBRARIES}")
+target_include_directories(${PROJECT_NAME} PRIVATE "${SDL_TTF_DIR}")
 
-find_package(OpenGL REQUIRED)
-find_package(GLM REQUIRED)
+# GLAD
+set(GLAD_DIR "${DEPS_DIR}/GLAD")
+add_subdirectory("${GLAD_DIR}")
+target_link_libraries(${PROJECT_NAME} "GLAD" "${GLAD_LIBRARIES}")
+target_include_directories(${PROJECT_NAME} PRIVATE "${DEPS_DIR}/GLAD/include")
 
-if(NOT OPENGL_FOUND)
-	message(FATAL_ERROR "OpenGL not found!")
-endif(NOT OPENGL_FOUND)
-
-if(NOT GLM_FOUND)
-	message(FATAL_ERROR "glm not found!")
-endif(NOT GLM_FOUND)
-
-include_directories(${GLM_INCLUDE_DIRS})
-
-#------------------------------------------------------------------------------
-# - SDL2, SDL2_image, SDL2_mixer, SDL2_ttf
-#------------------------------------------------------------------------------
-if (MSVC)
-	set(SDL2_PATH       ${WIN_LIBRARIES_PATH}/SDL2       CACHE BOOL "" FORCE)
-	set(SDL2_IMAGE_PATH ${WIN_LIBRARIES_PATH}/SDL2_image CACHE BOOL "" FORCE)
-	set(SDL2_MIXER_PATH ${WIN_LIBRARIES_PATH}/SDL2_mixer CACHE BOOL "" FORCE)
-	set(SDL2_TTF_PATH   ${WIN_LIBRARIES_PATH}/SDL2_ttf   CACHE BOOL "" FORCE)
-elseif (WIN32)
-	set(SDL2_PATH       ${WIN_LIBRARIES_PATH}/SDL2/i686-w64-mingw32       CACHE BOOL "" FORCE)
-	set(SDL2_IMAGE_PATH ${WIN_LIBRARIES_PATH}/SDL2_image/i686-w64-mingw32 CACHE BOOL "" FORCE)
-	set(SDL2_MIXER_PATH ${WIN_LIBRARIES_PATH}/SDL2_mixer/i686-w64-mingw32 CACHE BOOL "" FORCE)
-	set(SDL2_TTF_PATH   ${WIN_LIBRARIES_PATH}/SDL2_ttf/i686-w64-mingw32   CACHE BOOL "" FORCE)
-endif ()
-
-find_package(SDL2 REQUIRED)
-find_package(SDL2_image REQUIRED)
-find_package(SDL2_mixer REQUIRED)
-find_package(SDL2_ttf REQUIRED)
-
-if(NOT SDL2_FOUND)
-	message(FATAL_ERROR "SDL2 not found!")
-endif(NOT SDL2_FOUND)
-
-if(NOT SDL2_IMAGE_FOUND)
-	message(FATAL_ERROR "SDL2_image not found!")
-endif(NOT SDL2_IMAGE_FOUND)
-
-if(NOT SDL2_MIXER_FOUND)
-	message(FATAL_ERROR "SDL2_mixer not found!")
-endif(NOT SDL2_MIXER_FOUND)
-
-if(NOT SDL2_TTF_FOUND)
-	message(FATAL_ERROR "SDL2_ttf not found!")
-endif(NOT SDL2_TTF_FOUND)
-
-include_directories(${SDL2_INCLUDE_DIRS}
-                    ${SDL2_IMAGE_INCLUDE_DIRS}
-                    ${SDL2_MIXER_INCLUDE_DIRS}
-                    ${SDL2_TTF_INCLUDE_DIRS})
-
-#------------------------------------------------------------------------------
-# - GLEW
-#------------------------------------------------------------------------------
-if (WIN32)
-	set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} ${WIN_LIBRARIES_PATH}/glew)
-
-	find_package(GLEW REQUIRED)
-
-	if(NOT GLEW_FOUND)
-		message(FATAL_ERROR "GLEW not found!")
-	endif(NOT GLEW_FOUND)
-
-	include_directories(${GLEW_INCLUDE_DIRS})
-endif ()
+message(STATUS "This is the BINARY dir " ${PROJECT_BINARY_DIR})
+message(STATUS "This is the SOURCE dir " ${PROJECT_SOURCE_DIR})

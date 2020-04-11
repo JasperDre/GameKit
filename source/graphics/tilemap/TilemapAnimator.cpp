@@ -24,10 +24,10 @@
  *
  * =====================================================================================
  */
-#include "gk/graphics/tilemap/TilemapAnimator.hpp"
-#include "gk/graphics/Tilemap.hpp"
+#include "Graphics/Tilemap/TilemapAnimator.hpp"
+#include "Graphics/Tilemap.hpp"
 
-namespace gk {
+namespace GameKit {
 
 void TilemapAnimator::init(Tilemap &map) {
 	m_tileAnimations.assign(map.width() * map.height(), {});
@@ -56,5 +56,5 @@ void TilemapAnimator::animateTiles(Tilemap &map) {
 	}
 }
 
-} // namespace gk
+} // namespace GameKit
 

@@ -26,10 +26,10 @@
  */
 #include <algorithm>
 
-#include "gk/core/ArgumentParser.hpp"
-#include "gk/core/Debug.hpp"
+#include "Core/ArgumentParser.hpp"
+#include "Core/Debug.hpp"
 
-namespace gk {
+namespace GameKit {
 
 ArgumentParser::ArgumentParser() {
 	addArgument("help", {"", "--help", "Display help on commandline options."});
@@ -86,11 +86,11 @@ void ArgumentParser::printHelp() {
 }
 
 void ArgumentParser::debug() {
-	gkDebug() << "========== ARGS ==========";
+	GameKitDebug() << "========== ARGS ==========";
 	for (auto &it : m_arguments)
-		gkDebug() << it.second.longName.c_str() << "/" << it.second.shortName.c_str() << "=" <<  it.second.isFound;
-	gkDebug() << "==========================";
+		GameKitDebug() << it.second.longName.c_str() << "" << it.second.shortName.c_str() << "=" <<  it.second.isFound;
+	GameKitDebug() << "==========================";
 }
 
-} // namespace gk
+} // namespace GameKit
 

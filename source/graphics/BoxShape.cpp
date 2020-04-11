@@ -24,11 +24,11 @@
  *
  * =====================================================================================
  */
-#include "gk/gl/GLCheck.hpp"
-#include "gk/gl/Vertex.hpp"
-#include "gk/graphics/BoxShape.hpp"
+#include "GL/GLCheck.hpp"
+#include "GL/Vertex.hpp"
+#include "Graphics/BoxShape.hpp"
 
-namespace gk {
+namespace GameKit {
 
 void BoxShape::updateVertexBuffer() const {
 	constexpr u8f cubeVerts[6][4]{
@@ -70,9 +70,9 @@ void BoxShape::updateVertexBuffer() const {
 		}
 	}
 
-	gk::VertexBuffer::bind(&m_vbo);
+	GameKit::VertexBuffer::bind(&m_vbo);
 	m_vbo.setData(sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
-	gk::VertexBuffer::bind(nullptr);
+	GameKit::VertexBuffer::bind(nullptr);
 
 	m_isVboInitialized = true;
 }
@@ -93,5 +93,5 @@ void BoxShape::draw(RenderTarget &target, RenderStates states) const {
 	glCheck(glDisable(GL_DEPTH_TEST));
 }
 
-} // namespace gk
+} // namespace GameKit
 

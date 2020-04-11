@@ -26,11 +26,11 @@
  */
 #include <sstream>
 
-#include "gk/core/Exception.hpp"
-#include "gk/core/XMLFile.hpp"
-#include "gk/graphics/Tileset.hpp"
+#include "Core/Exception.hpp"
+#include "Core/XMLFile.hpp"
+#include "Graphics/Tileset.hpp"
 
-namespace gk {
+namespace GameKit {
 
 Tileset::Tileset(const std::string &filename, const std::string &configFile) {
 	load(filename, configFile);
@@ -80,5 +80,5 @@ void Tileset::load(const std::string &filename, const std::string &configFile) {
 	}
 }
 
-} // namespace gk
+} // namespace GameKit
 

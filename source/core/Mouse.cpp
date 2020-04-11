@@ -24,10 +24,10 @@
  *
  * =====================================================================================
  */
-#include "gk/core/Mouse.hpp"
-#include "gk/core/SDLHeaders.hpp"
+#include "Core/Mouse.hpp"
+#include "Core/SDLHeaders.hpp"
 
-namespace gk {
+namespace GameKit {
 
 Window *Mouse::s_window = nullptr;
 
@@ -53,5 +53,5 @@ bool Mouse::isInRect(const IntRect &rect) {
 	return rect.contains(getPosition());
 }
 
-} // namespace gk
+} // namespace GameKit
 

@@ -24,11 +24,11 @@
  *
  * =====================================================================================
  */
-#include "gk/audio/AudioPlayer.hpp"
-#include "gk/graphics/TextInput.hpp"
-#include "gk/resource/ResourceHandler.hpp"
+#include "audio/AudioPlayer.hpp"
+#include "Graphics/TextInput.hpp"
+#include "Resources/ResourceHandler.hpp"
 
-namespace gk {
+namespace GameKit {
 
 TextInput::TextInput() {
 	m_rectText.setFillColor(Color::Black);
@@ -79,5 +79,5 @@ void TextInput::draw(RenderTarget &target, RenderStates states) const {
 	target.draw(m_text, states);
 }
 
-} // namespace gk
+} // namespace GameKit
 

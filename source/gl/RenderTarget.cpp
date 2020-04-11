@@ -24,15 +24,16 @@
  *
  * =====================================================================================
  */
-#include "gk/gl/GLCheck.hpp"
-#include "gk/gl/Drawable.hpp"
-#include "gk/gl/RenderTarget.hpp"
-#include "gk/gl/Shader.hpp"
-#include "gk/gl/Texture.hpp"
-#include "gk/gl/Vertex.hpp"
-#include "gk/gl/VertexBuffer.hpp"
+#include "GL/GLCheck.hpp"
+#include "GL/Drawable.hpp"
+#include "GL/RenderTarget.hpp"
+#include "GL/Shader.hpp"
+#include "GL/GLCheck.hpp"
+#include "GL/Vertex.hpp"
+#include "GL/VertexBuffer.hpp"
+#include "GL/Texture.hpp"
 
-namespace gk {
+namespace GameKit {
 
 const RenderStates RenderStates::Default{};
 
@@ -130,5 +131,5 @@ void RenderTarget::applyCurrentView(const RenderStates &states) {
 	m_viewChanged = false;
 }
 
-} // namespace gk
+} // namespace GameKit
 

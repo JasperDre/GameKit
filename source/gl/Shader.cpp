@@ -30,12 +30,12 @@
 #define GLM_FORCE_RADIANS
 #include <glm/gtc/type_ptr.hpp>
 
-#include "gk/gl/GLCheck.hpp"
-#include "gk/gl/Shader.hpp"
-#include "gk/gl/Transform.hpp"
-#include "gk/core/Exception.hpp"
+#include "GL/GLCheck.hpp"
+#include "GL/Shader.hpp"
+#include "Transform.hpp"
+#include "Core/Exception.hpp"
 
-namespace gk {
+namespace GameKit {
 
 const Shader *Shader::s_boundShader = nullptr;
 
@@ -176,7 +176,7 @@ GLint Shader::uniform(const std::string &name) const {
 	glCheck(uniform = glGetUniformLocation(m_program, name.c_str()));
 
 	if(uniform == -1) {
-		gkDebug() << "Could not bind uniform:" << name;
+		GameKitDebug() << "Could not bind uniform:" << name;
 	}
 
 	return uniform;
@@ -198,7 +198,7 @@ void Shader::setUniform(const std::string &name, float x, float y) const {
 	glCheck(glUniform2f(uniform(name), x, y));
 }
 
-void Shader::setUniform(const std::string &name, const gk::Color &color) const {
+void Shader::setUniform(const std::string &name, const GameKit::Color &color) const {
 	glCheck(glUniform4f(uniform(name), color.r, color.g, color.b, color.a));
 }
 
@@ -217,5 +217,5 @@ void Shader::bind(const Shader *shader) {
 	}
 }
 
-} // namespace gk
+} // namespace GameKit
 

@@ -24,10 +24,10 @@
  *
  * =====================================================================================
  */
-#include "gk/core/XMLFile.hpp"
-#include "gk/core/Exception.hpp"
+#include "Core/XMLFile.hpp"
+#include "Core/Exception.hpp"
 
-namespace gk {
+namespace GameKit {
 
 XMLFile::XMLFile(const std::string &filename) {
 	load(filename);
@@ -88,5 +88,5 @@ void XMLFile::load(const std::string &filename) {
 	}
 }
 
-} // namespace gk
+} // namespace GameKit
 

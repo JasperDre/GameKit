@@ -24,10 +24,10 @@
  *
  * =====================================================================================
  */
-#include "gk/core/Timer.hpp"
-#include "gk/core/GameClock.hpp"
+#include "Core/Timer.hpp"
+#include "Core/GameClock.hpp"
 
-namespace gk {
+namespace GameKit {
 
 Timer::Timer(bool useRealTime) {
 	m_useRealTime = useRealTime;
@@ -70,5 +70,5 @@ void Timer::setTime(u32 time) {
 	}
 }
 
-} // namespace gk
+} // namespace GameKit
 

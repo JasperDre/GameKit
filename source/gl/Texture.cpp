@@ -24,11 +24,11 @@
  *
  * =====================================================================================
  */
-#include "gk/gl/GLCheck.hpp"
-#include "gk/gl/Texture.hpp"
-#include "gk/core/Exception.hpp"
+#include "GL/GLCheck.hpp"
+#include "GL/Texture.hpp"
+#include "Core/Exception.hpp"
 
-namespace gk {
+namespace GameKit {
 
 const Texture *Texture::s_boundTexture = nullptr;
 
@@ -111,5 +111,5 @@ void Texture::bind(const Texture *texture) {
 	}
 }
 
-} // namespace gk
+} // namespace GameKit
 

@@ -24,10 +24,10 @@
  *
  * =====================================================================================
  */
-#include "gk/graphics/Font.hpp"
-#include "gk/core/Exception.hpp"
+#include "Graphics/Font.hpp"
+#include "Core/Exception.hpp"
 
-namespace gk {
+namespace GameKit {
 
 void Font::loadFont(int ptsize) const {
 	TTF_FontPtr font{TTF_OpenFont(m_filename.c_str(), ptsize), TTF_CloseFont};
@@ -60,5 +60,5 @@ void Font::update() {
 	}
 }
 
-} // namespace gk
+} // namespace GameKit
 

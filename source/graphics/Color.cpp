@@ -24,9 +24,9 @@
  *
  * =====================================================================================
  */
-#include "gk/graphics/Color.hpp"
+#include "Graphics/Color.hpp"
 
-namespace gk {
+namespace GameKit {
 
 const Color Color::Black(0, 0, 0);
 const Color Color::White(255, 255, 255);
@@ -45,5 +45,5 @@ Color::Color(u8 _r, u8 _g, u8 _b, u8 _a) {
 	a = _a / 255.0f;
 }
 
-} // namespace gk
+} // namespace GameKit
 

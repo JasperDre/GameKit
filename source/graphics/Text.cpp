@@ -26,11 +26,12 @@
  */
 #include <algorithm>
 
-#include "gk/graphics/Text.hpp"
-#include "gk/resource/ResourceHandler.hpp"
-#include "gk/core/Debug.hpp"
+#include "Graphics/Text.hpp"
+#include "Resources/ResourceHandler.hpp"
+#include "Core/Debug.hpp"
+#include "GL/Texture.hpp"
 
-namespace gk {
+namespace GameKit {
 
 Text::Text(const std::string &fontResourceName, int ptsize) {
 	m_characterSize = ptsize;
@@ -108,7 +109,7 @@ void Text::update() const {
 			m_image.setPosRect(0, 0, m_texture->getSize().x, m_texture->getSize().y);
 	}
 	else
-		gkError() << "Unable to create text image for" << m_string << ":" << TTF_GetError();
+		GameKitError() << "Unable to create text image for" << m_string << ":" << TTF_GetError();
 
 	// FIXME: Save old style instead of restoring Normal
 	TTF_SetFontStyle(font, Style::Normal);
@@ -123,5 +124,5 @@ void Text::draw(RenderTarget &target, RenderStates states) const {
 	target.draw(m_image, states);
 }
 
-} // namespace gk
+} // namespace GameKit
 

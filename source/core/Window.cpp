@@ -24,12 +24,13 @@
  *
  * =====================================================================================
  */
-#include "gk/core/Window.hpp"
-#include "gk/gl/GLCheck.hpp"
-#include "gk/gl/OpenGL.hpp"
-#include "gk/core/Exception.hpp"
+#include "Core/Window.hpp"
+#include "GL/GLCheck.hpp"
+#define USE_GLAD
+#include "GL/OpenGL.hpp"
+#include "Core/Exception.hpp"
 
-namespace gk {
+namespace GameKit {
 
 void Window::open(const std::string &caption, u16 width, u16 height) {
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
@@ -90,7 +91,7 @@ void Window::onEvent(const SDL_Event &event) {
 
 void Window::setVerticalSyncEnabled(bool isVerticalSyncEnabled) {
 	if(SDL_GL_SetSwapInterval(isVerticalSyncEnabled) < 0) {
-		gkWarning() << "Can't enable VSync";
+		GameKitWarning() << "Can't enable VSync";
 	}
 	else {
 		m_isVerticalSyncEnabled = isVerticalSyncEnabled;
@@ -137,5 +138,5 @@ void Window::resize(unsigned int width, unsigned int height) {
 	SDL_SetWindowSize(m_window.get(), width, height);
 }
 
-} // namespace gk
+} // namespace GameKit
 

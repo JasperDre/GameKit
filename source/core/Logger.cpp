@@ -24,9 +24,9 @@
  *
  * =====================================================================================
  */
-#include "gk/core/Logger.hpp"
+#include "Core/Logger.hpp"
 
-namespace gk {
+namespace GameKit {
 
 bool Logger::isEnabled = true;
 bool Logger::printFileAndLine = false;
@@ -51,9 +51,9 @@ void Logger::print() {
 	std::cout << m_stream.str() << LoggerColor::White << std::endl;
 }
 
-} // namespace gk
+} // namespace GameKit
 
-std::ostream &operator<<(std::ostream &stream, gk::LoggerColor color) {
-	return stream << gk::Logger::textColor(color);
+std::ostream &operator<<(std::ostream &stream, GameKit::LoggerColor color) {
+	return stream << GameKit::Logger::textColor(color);
 }
 

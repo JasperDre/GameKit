@@ -24,12 +24,12 @@
  *
  * =====================================================================================
  */
-#include "gk/audio/AudioPlayer.hpp"
-#include "gk/audio/Music.hpp"
-#include "gk/audio/Sound.hpp"
-#include "gk/resource/ResourceHandler.hpp"
+#include "audio/AudioPlayer.hpp"
+#include "audio/Music.hpp"
+#include "audio/Sound.hpp"
+#include "Resources/ResourceHandler.hpp"
 
-namespace gk {
+namespace GameKit {
 
 bool AudioPlayer::s_muteState = false;
 
@@ -64,5 +64,5 @@ bool AudioPlayer::isMusicPlaying() {
 	return Mix_PlayingMusic();
 }
 
-} // namespace gk
+} // namespace GameKit
 

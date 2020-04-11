@@ -27,9 +27,9 @@
 #define GLM_FORCE_RADIANS
 #include <glm/gtc/matrix_transform.hpp>
 
-#include "gk/gl/Camera.hpp"
+#include "Camera.hpp"
 
-namespace gk {
+namespace GameKit {
 
 Camera::Camera(float fov, float near, float far) {
 	m_fieldOfView = fov;
@@ -107,5 +107,5 @@ const Transform& Camera::getViewTransform() const {
 	return m_viewTransform;
 }
 
-} // namespace gk
+} // namespace GameKit
 

@@ -24,13 +24,13 @@
  *
  * =====================================================================================
  */
-#include "gk/gl/GLCheck.hpp"
-#include "gk/gl/Shader.hpp"
-#include "gk/gl/Vertex.hpp"
-#include "gk/graphics/tilemap/TilemapRenderer.hpp"
-#include "gk/graphics/Tilemap.hpp"
+#include "GL/GLCheck.hpp"
+#include "GL/Shader.hpp"
+#include "GL/Vertex.hpp"
+#include "Graphics/Tilemap/TilemapRenderer.hpp"
+#include "Graphics/Tilemap.hpp"
 
-namespace gk {
+namespace GameKit {
 
 void TilemapRenderer::init(Tilemap *map, u16 mapWidth, u16 mapHeight, u8 mapLayers) {
 	m_map = map;
@@ -87,5 +87,5 @@ void TilemapRenderer::draw(RenderTarget &target, RenderStates states) const {
 	}
 }
 
-} // namespace gk
+} // namespace GameKit
 

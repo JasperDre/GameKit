@@ -24,10 +24,10 @@
  *
  * =====================================================================================
  */
-#include "gk/audio/Sound.hpp"
-#include "gk/core/Exception.hpp"
+#include "audio/Sound.hpp"
+#include "Core/Exception.hpp"
 
-namespace gk {
+namespace GameKit {
 
 int Sound::s_lastUsedChannel = -1;
 
@@ -60,5 +60,5 @@ void Sound::repeat(u16 delay) {
 	}
 }
 
-} // namespace gk
+} // namespace GameKit
 

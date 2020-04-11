@@ -27,9 +27,9 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
-#include "gk/core/Filesystem.hpp"
+#include "Core/Filesystem.hpp"
 
-namespace gk {
+namespace GameKit {
 
 bool Filesystem::fileExists(const std::string &filename) {
 	struct stat info;
@@ -37,5 +37,5 @@ bool Filesystem::fileExists(const std::string &filename) {
 	return !stat(filename.c_str(), &info);
 }
 
-} // namespace gk
+} // namespace GameKit
 

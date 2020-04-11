@@ -27,9 +27,9 @@
 #include <iomanip>
 #include <sstream>
 
-#include "gk/core/Utils.hpp"
+#include "Core/Utils.hpp"
 
-namespace gk {
+namespace GameKit {
 
 bool regexMatch(const std::string &str, const std::string &regex) {
 	std::regex re(regex);
@@ -48,5 +48,5 @@ std::string getCurrentTime(const char *format) {
 	return sstream.str();
 }
 
-} // namespace gk
+} // namespace GameKit
 

@@ -24,9 +24,9 @@
  *
  * =====================================================================================
  */
-#include "gk/graphics/SpriteAnimation.hpp"
+#include "Graphics/SpriteAnimation.hpp"
 
-namespace gk {
+namespace GameKit {
 
 void SpriteAnimation::reset(u16 frameID) {
 	m_timer.reset();

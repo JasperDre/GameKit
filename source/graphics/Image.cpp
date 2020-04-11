@@ -24,13 +24,13 @@
  *
  * =====================================================================================
  */
-#include "gk/gl/GLCheck.hpp"
-#include "gk/gl/Texture.hpp"
-#include "gk/gl/Vertex.hpp"
-#include "gk/graphics/Image.hpp"
-#include "gk/resource/ResourceHandler.hpp"
+#include "GL/GLCheck.hpp"
+#include "GL/Texture.hpp"
+#include "GL/Vertex.hpp"
+#include "Graphics/Image.hpp"
+#include "Resources/ResourceHandler.hpp"
 
-namespace gk {
+namespace GameKit {
 
 Image::Image(const std::string &textureName) {
 	load(ResourceHandler::getInstance().get<Texture>(textureName));

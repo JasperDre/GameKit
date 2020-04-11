@@ -26,9 +26,9 @@
  */
 #include <cmath>
 
-#include "gk/gl/Transformable.hpp"
+#include "GL/Transformable.hpp"
 
-namespace gk {
+namespace GameKit {
 
 void Transformable::setPosition(float x, float y, float z) {
 	m_position.x = x;
@@ -119,5 +119,5 @@ const Transform& Transformable::getTransform() const {
 // 	return m_inverseTransform;
 // }
 
-} // namespace gk
+} // namespace GameKit
 

@@ -27,12 +27,12 @@
 #define GLM_FORCE_RADIANS
 #include <glm/gtc/matrix_transform.hpp>
 
-#include "gk/gl/GLCheck.hpp"
-#include "gk/gl/Shader.hpp"
-#include "gk/gl/Vertex.hpp"
-#include "gk/graphics/RectangleShape.hpp"
+#include "GL/GLCheck.hpp"
+#include "GL/Shader.hpp"
+#include "GL/Vertex.hpp"
+#include "Graphics/RectangleShape.hpp"
 
-namespace gk {
+namespace GameKit {
 
 RectangleShape::RectangleShape() {
 	for (u8 i = 1 ; i < 5 ; ++i) {
@@ -114,5 +114,5 @@ void RectangleShape::draw(RenderTarget &target, RenderStates states) const {
 	if(m_wireframeMode) glCheck(glPolygonMode(GL_FRONT_AND_BACK, GL_FILL));
 }
 
-} // namespace gk
+} // namespace GameKit
 
