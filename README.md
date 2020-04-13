@@ -1,5 +1,5 @@
 # GameKit
-This is a more developer-friendly fork of [GameKit by Unarelith](https://github.com/Unarelith/GameKit).
+This is a more developer-friendly fork of [GameKit by Unarelith](https://github.com/Unarelith/GameKit). Enable `USE_GLAD` in cmake to compile using glad instead of glew.
 
 ## Description
 GameKit is a library I made to avoid duplicating code in my projets.
